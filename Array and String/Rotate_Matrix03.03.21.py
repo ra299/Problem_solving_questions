@@ -5,7 +5,6 @@ def rotate(matrix):
     for layer in range(round(n/2)):
         frist = layer
         last = n-1-layer
-        i = frist
         for i in range(last):
             offset = i - frist
 

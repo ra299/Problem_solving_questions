@@ -2,9 +2,9 @@ def oneEditAway(firstStr, secondStr):
     if(len(firstStr) == len(secondStr)):
         return oneEditReplace(firstStr, secondStr)
     elif(len(firstStr)+1 == len(secondStr)):
-        return oneEditInsert(firstStr, secondStr)
+        return oneEditTest(firstStr, secondStr)
     elif(len(firstStr)-1 == len(secondStr)):
-        return oneEditInsert(secondStr, firstStr)
+        return oneEditTest(secondStr, firstStr)
 
 def oneEditReplace(firstStr,secondStr):
     foundDiffrence = False
@@ -15,7 +15,7 @@ def oneEditReplace(firstStr,secondStr):
             foundDiffrence = True
     return True
 
-def oneEditInsert(str1, str2):
+def oneEditTest(str1, str2):
     index1 = 0
     index2 = 0
     while(index1 < len(str1) and index2 < len(str2)):
