@@ -1,59 +1,36 @@
 class Node:
-    def __init__(self, ch):
-        self.data = ch
+    def __init__(self,data):
+        self.data = data
         self.next = None
 
+class Linked_List:
+    def __init__(self):
+        self.head = None
 
-# fisrt Plaindrom approch . Here we make two string s1 and s2 . irst s1 and then s2 but not same format , s2 is bulid in reverse
-# if s1 and s2 same then ok
-# def construct(head, s1 = "", s2 = ""):
-#     print()
-#     if(head is None):
-#         return s1, s2
-    
-#     s1 += head.data
-#     s1, s2 = construct(head.next, s1, s2)
-#     s2 += head.data
+    def _print_linked_List(self):
+        current = self.head
+        while(current):
+            print(current.data, end = "__")
+            current = current.next
 
-#     return s1,s2
+    def palindrome_Ulit(self, string):
+        return(string == string[::-1])
 
-# def check_palindrom(head):
-#     s1, s2 = construct(head)
-#     return s1 == s2
+    def check_Palindrome(self):
+        temp = []
+        current = self.head
+        while(current):
+            temp.append(current.data)
+            current = current.next
+        string = "".join(temp)
+        return self.palindrome_Ulit(string)
 
-# Second Plindrom approch, here we check left first to right first and incriment and again check 
-def isPalindrome(left, right):
- 
-    if right is None:
-        return True, left
- 
-    val, left = isPalindrome(left, right.next)
-    if not val:
-        return False, left
- 
-    prev_left = left
- 
-    left = left.next
- 
-    return prev_left.data == right.data, left
- 
-if __name__ == '__main__':
- 
-    head = Node("0")
-    head.next = Node("1")
-    head.next.next = Node("2")
-    head.next.next.next = Node("3")
-    head.next.next.next.next = Node("2")
-    head.next.next.next.next.next = Node("1")
-    head.next.next.next.next.next.next = Node("0")
-
-    # if(check_palindrom(head)):
-    #     print("its a Plindrom")
-    # else:
-    #     print("its not a Plindrom")
-
-    left = head
-    if isPalindrome(left, head)[0]:
-        print("Linked List is a palindrome.")
-    else:
-        print("Linked List is not a palindrome.")
+if __name__  == "__main__":
+    llist = Linked_List()
+    llist.head = Node('a')
+    llist.head.next = Node('bc')
+    llist.head.next.next = Node("d")
+    llist.head.next.next.next = Node("dcb")
+    llist.head.next.next.next.next = Node("a")
+    print("True") if llist.check_Palindrome() else "false"
+    llist._print_linked_List()
