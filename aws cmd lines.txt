@@ -1,0 +1,12 @@
+#!/bin/bash
+yum update -y
+yum install httpd -y
+service httpd start
+chkconfig httpd on
+yum install -y amazon-efs-utils
+
+cd /var/www/html
+echo "<html><h1>Rahul Sen , All Ok</h1></html>"
+>index.html
+aws s3 mb s3://hagafgbkzzckajhdnxLKS123456789
+aws s3 cp index.html s3://hagafgbkzzckajhdnxLKS123456789
